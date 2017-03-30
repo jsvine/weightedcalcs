@@ -75,5 +75,5 @@ calc.distribution(responses, "marriage_status").round(3).sort_values(ascending=F
 ## Other Python weighted-calculation libraries
 
 - [`tinybike/weightedstats`](https://github.com/tinybike/weightedstats)
-- [`nudomarinero/wquantiles/`](https://github.com/nudomarinero/wquantiles/)
+- [`nudomarinero/wquantiles`](https://github.com/nudomarinero/wquantiles/)
 
