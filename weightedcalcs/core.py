@@ -1,4 +1,18 @@
+from __future__ import division
 import pandas as pd
+
+PANDAS_TYPES = (
+    pd.DataFrame,
+    pd.core.groupby.DataFrameGroupBy,
+)
+
+def pandas_deco(func):
+    def func_wrapper(self, thing, *args, **kwargs):
+        if isinstance(thing, PANDAS_TYPES):
+            return func(self, thing, *args, **kwargs)
+        else:
+            return func(self, pd.DataFrame(thing), *args, **kwargs)
+    return func_wrapper
 
 def groupby_deco(func):
     def func_wrapper(self, thing, *args, **kwargs):
@@ -30,16 +44,19 @@ class Calculator(object):
         self.weight_var = weight_var
 
     @groupby_deco
+    @pandas_deco
     def count(self, thing):
         return thing[self.weight_var].sum()
 
     @groupby_deco
+    @pandas_deco
     def sum(self, thing, value_var):
         weights = thing[self.weight_var]
         values = check_nulls(thing[value_var])
         return (values * weights).sum()
     
     @groupby_deco
+    @pandas_deco
     def mean(self, thing, value_var):
         weights = thing[self.weight_var]
         total_weight = weights.sum()
@@ -47,6 +64,7 @@ class Calculator(object):
         return (values * weights).sum() / total_weight
     
     @groupby_deco
+    @pandas_deco
     def std(self, thing, value_var):
         weights = thing[self.weight_var]
         n_nonzero_weights = (weights > 0).sum()
@@ -58,6 +76,7 @@ class Calculator(object):
         return pow(numerator / denominator, 0.5)
 
     @groupby_deco
+    @pandas_deco
     def quantile(self, thing, value_var, q):
         if q < 0 or q > 1:
             raise ValueError("q must be between 0 and 1")
@@ -73,11 +92,13 @@ class Calculator(object):
             return shaved.iloc[0]["values"]
 
     @groupby_deco
+    @pandas_deco
     def median(self, thing, value_var):
         return self.quantile(thing, value_var, 0.5)
 
     @fillna_deco(0)
     @groupby_deco
+    @pandas_deco
     def distribution(self, thing, value_var):
         weights = thing[self.weight_var]
         total_weight = weights.sum()
