@@ -1,3 +1,2 @@
-VERSION_TUPLE = (0, 0, 0)
-VERSION = ".".join(map(str, VERSION_TUPLE))
+from .__version__ import __version__
 from .core import Calculator
