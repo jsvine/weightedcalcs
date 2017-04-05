@@ -7,8 +7,10 @@
 ## Features
 
 - Plays well with `pandas`.
-- Built-in support for grouped calculations, using `DataFrameGroupBy` objects.
+- Support for weighted means, medians, quantiles, standard deviations, and distributions.
+- Support for grouped calculations, using `DataFrameGroupBy` objects.
 - Raises an error when your data contains null-values.
+- Full test coverage.
 
 ## Installation
 
@@ -31,15 +33,19 @@ calc = wc.Calculator("resp_weight")
 
 Currently, `weightedcalcs.Calculator` supports the following calculations:
 
-- `calc.count(my_data)`: The weighted count of all observations, i.e., the total weight.
-- `calc.sum(my_data, value_var)`: The weighted sum of `value_var`.
 - `calc.mean(my_data, value_var)`: The weighted arithmetic average of `value_var`.
 - `calc.quantile(my_data, value_var, q)`: The weighted quantile of `value_var`, where `q` is between 0 and 1.
 - `calc.median(my_data, value_var)`: The weighted median of `value_var`, equivalent to `.quantile(...)` where `q=0.5`.
 - `calc.std(my_data, value_var)`: The weighted standard deviation of `value_var`.
 - `calc.distribution(my_data, value_var)`: The weighted proportions of `value_var`, interpreting `value_var` as categories.
+- `calc.count(my_data)`: The weighted count of all observations, i.e., the total weight.
+- `calc.sum(my_data, value_var)`: The weighted sum of `value_var`.
 
-The `obj` parameter above should be a `pandas` `DataFrame` or `DataFrame.groupby` object.
+The `obj` parameter above should one of the following:
+
+- A `pandas` `DataFrame` object
+- A `pandas` `DataFrame.groupby` object
+- A plain Python dictionary where the keys are column names and the values are equal-length lists.
 
 ### Basic example
 
