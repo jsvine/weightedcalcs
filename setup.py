@@ -9,7 +9,7 @@ with open(os.path.join(HERE, NAME, '__version__.py')) as f:
     exec(f.read(), {}, version_ns)
 
 setup(
-    name="weightedcalcs",
+    name=NAME,
     version=version_ns['__version__'],
     description="Pandas-based utility to calculate weighted means, medians, distributions, standard deviations, and more.",
     url="http://github.com/jsvine/weightedcalcs",
@@ -19,6 +19,9 @@ setup(
     packages=[
         NAME
     ],
+    package_data={
+        "": [ "*.txt", "*.md" ], 
+    },
     install_requires=[
         "pandas>=0.19"
     ],
