@@ -19,6 +19,9 @@ setup(
     packages=[
         NAME
     ],
+    package_data={
+        "": [ "*.txt", "*.md" ], 
+    },
     install_requires=[
         "pandas>=0.19"
     ],
