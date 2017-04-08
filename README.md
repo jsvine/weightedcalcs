@@ -78,6 +78,12 @@ calc.distribution(responses, "marriage_status").round(3).sort_values(ascending=F
 
 [See this notebook to see examples of other calculations, including grouped calculations.](examples/notebooks/example-usage.ipynb)
 
+### Weightedcalcs in the wild
+
+- "[Procesando los microdatos de la Encuesta Permanente de Hogares](http://blog.jazzido.com/2017/01/09/procesando-microdatos-eph)," by Manuel Aristarán
+- [BuzzFeedNews/2017-01-media-platform-and-news-trust-survey](https://github.com/BuzzFeedNews/2017-01-media-platform-and-news-trust-survey/blob/master/notebooks/platform-trust-additional-analysis.ipynb)
+- [BuzzFeedNews/2016-12-transgender-rights-survey](https://github.com/BuzzFeedNews/2016-12-transgender-rights-survey/blob/master/notebooks/additional-analysis.ipynb)
+
 ## Other Python weighted-calculation libraries
 
 - [`tinybike/weightedstats`](https://github.com/tinybike/weightedstats)
