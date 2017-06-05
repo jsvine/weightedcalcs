@@ -19,7 +19,7 @@ def groupby_deco(func):
         if isinstance(thing, pd.core.groupby.DataFrameGroupBy):
             agg = thing.apply(lambda x: func(self, x, *args, **kwargs))
             is_series = isinstance(agg, pd.core.series.Series)
-            has_multiindex = isinstance(agg.index, pd.indexes.multi.MultiIndex)
+            has_multiindex = isinstance(agg.index, pd.MultiIndex)
             if is_series and has_multiindex:
                 return agg.unstack()
             else:
