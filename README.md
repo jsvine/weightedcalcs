@@ -78,6 +78,8 @@ calc.distribution(responses, "marriage_status").round(3).sort_values(ascending=F
 
 [See this notebook to see examples of other calculations, including grouped calculations.](examples/notebooks/example-usage.ipynb)
 
+[Max Ghenis](https://github.com/MaxGhenis) has created [a version of the example notebook that can be run directly in your browser](https://colab.research.google.com/gist/MaxGhenis/4c96163eacebc1005419c9533a568c7e/weightedcalcs-example-usage-scf.ipynb), via Google Colab. 
+
 ### Weightedcalcs in the wild
 
 - "[Procesando los microdatos de la Encuesta Permanente de Hogares](http://blog.jazzido.com/2017/01/09/procesando-microdatos-eph)," by Manuel Aristarán
