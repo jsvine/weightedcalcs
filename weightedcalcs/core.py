@@ -68,7 +68,7 @@ class Calculator(object):
     def std(self, thing, value_var):
         weights = thing[self.weight_var]
         n_nonzero_weights = (weights > 0).sum()
-        if (n_nonzero_weights) < 2: return pd.np.nan
+        if (n_nonzero_weights) < 2: return pd.NA
         values = check_nulls(thing[value_var])
         mean = self.mean(thing, value_var)
         numerator = (weights * (values - mean).pow(2)).sum()
