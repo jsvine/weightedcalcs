@@ -20,7 +20,7 @@ setup(
         NAME
     ],
     install_requires=[
-        "pandas>=0.19"
+        "pandas>=2.0"
     ],
     classifiers=[
         "License :: OSI Approved :: MIT License",
