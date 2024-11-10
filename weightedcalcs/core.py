@@ -17,7 +17,7 @@ def pandas_deco(func):
 def groupby_deco(func):
     def func_wrapper(self, thing, *args, **kwargs):
         if isinstance(thing, pd.core.groupby.DataFrameGroupBy):
-            agg = thing.apply(lambda x: func(self, x, *args, **kwargs))
+            agg = thing.apply(lambda x: func(self, x, *args, **kwargs), include_groups=False)
             is_series = isinstance(agg, pd.core.series.Series)
             has_multiindex = isinstance(agg.index, pd.MultiIndex)
             if is_series and has_multiindex:
